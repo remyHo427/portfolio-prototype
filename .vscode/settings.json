@@ -2,12 +2,18 @@
   "editor.formatOnSave": false,
   "editor.tabSize": 2,
   "[typescript]": {
-    "editor.formatOnSave": true
+    "editor.codeActionsOnSave": {
+      "source.fixAll.eslint": true,
+    }
   },
   "[javascript]": {
-    "editor.formatOnSave": true
+    "editor.codeActionsOnSave": {
+      "source.fixAll.eslint": true,
+    }
   },
   "[typescriptreact]": {
-    "editor.formatOnSave": true
+    "editor.codeActionsOnSave": {
+      "source.fixAll.eslint": true,
+    }
   }
 }

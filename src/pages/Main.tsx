@@ -2,6 +2,9 @@ import * as React from 'react';
 import styled from 'styled-components';
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
+import Switch from '@mui/material/Switch';
+import LightModeIcon from '@mui/icons-material/LightMode';
+import DarkModeIcon from '@mui/icons-material/DarkMode';
 
 const Container = styled.div`
   margin: auto;
@@ -11,15 +14,12 @@ const Container = styled.div`
 const Header = styled.div`
   width: 100%;
   height: 3rem;
-  border: 1px black solid;
   display: flex;
 `;
 
 const HeaderTabs = styled(Tabs)`
-  border: 1px blue solid;
   height: 100%;
   width: 60%;
-  padding: 0 2.5rem 0 0;
 
   & > div > div {
     height: 100%;
@@ -29,29 +29,44 @@ const HeaderTabs = styled(Tabs)`
 
 const HeaderTab = styled(Tab)`
   height: 100%;
+  width: 20%;
+  font-size: 0.7rem;
 `;
 
-const Switches = styled.div`
-  border: 1px red solid;
+const SideContainer = styled.div`
   height: 100%;
   width: 20%;
 `;
 
 const Logo = styled.div`
-  border: 1px red solid;
-  height: 100%;
-  width: 20%;
+  width: 70%;
+  margin: auto;
+  background-color: #1976d2;
+  height: 140%;
+  color: white;
+  text-align: center;
+  padding: 1.25rem;
+  font-size: 1.25rem;
+`;
+
+const SwitchContainer = styled(SideContainer)`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 10%;
 `;
 
 const Main = () => {
-  const [tabValue, setTabValue] = React.useState(0);
+  const [tabValue, setTabValue] = React.useState(3);
   const handleChange = (e: React.MouseEvent, newValue: number) =>
     setTabValue(newValue);
 
   return (
     <Container>
       <Header>
-        <Logo />
+        <SideContainer>
+          <Logo>Logo</Logo>
+        </SideContainer>
         <HeaderTabs
           value={tabValue}
           onChange={handleChange}
@@ -62,7 +77,15 @@ const Main = () => {
           <HeaderTab label="About" />
           <HeaderTab label="Home" />
         </HeaderTabs>
-        <Switches />
+        <SwitchContainer>
+          <LightModeIcon
+            style={{ width: '0.9rem', height: '0.9rem' }}
+          />
+          <Switch />
+          <DarkModeIcon
+            style={{ width: '0.9rem', height: '0.9rem' }}
+          />
+        </SwitchContainer>
       </Header>
     </Container>
   );
