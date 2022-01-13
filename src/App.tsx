@@ -2,14 +2,14 @@ import '@fontsource/roboto/300.css';
 import '@fontsource/roboto/400.css';
 import '@fontsource/roboto/500.css';
 import '@fontsource/roboto/700.css';
-import './styles/global.css';
+import './styles/reset.css';
 
 import * as React from 'react';
 
-import Main from './pages/Main';
+import Home from './pages/Home';
 
 const App = () => {
-  return <Main />;
+  return <Home />;
 };
 
 export default App;
