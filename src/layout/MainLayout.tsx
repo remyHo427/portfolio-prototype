@@ -8,6 +8,21 @@ import Switch from '@mui/material/Switch';
 import LightModeIcon from '@mui/icons-material/LightMode';
 import DarkModeIcon from '@mui/icons-material/DarkMode';
 
+interface MainLayoutProps extends GenericProps {
+  isDark?: boolean;
+  setDark?: React.Dispatch<React.SetStateAction<boolean>>;
+}
+
+const Backdrop = styled.div`
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: ${(props) =>
+    props.theme.palette.background.paper};
+`;
+
 const Container = styled.div`
   margin: auto;
   width: 1400px;
@@ -42,13 +57,13 @@ const SideContainer = styled.div`
 
 const Logo = styled.div`
   width: 70%;
-  margin: auto;
+  margin: 0 auto 0 0;
   background-color: #1976d2;
   height: 140%;
   text-align: center;
   padding: 1.25rem;
   font-size: 1.25rem;
-  color: ${(props) => props.theme.fg};
+  color: ${(props) => props.theme.palette.text.secondary};
 `;
 
 const SwitchContainer = styled(SideContainer)`
@@ -56,24 +71,20 @@ const SwitchContainer = styled(SideContainer)`
   justify-content: center;
   align-items: center;
   width: 10%;
-`;
-
-const Main = styled.main`
-  width: 1400px;
-  margin: auto;
+  color: ${(props) => props.theme.palette.text.secondary};
 `;
 
 const MainLayoutChild = ({
   children,
   setDark,
   isDark,
-}: GenericProps & any) => {
+}: MainLayoutProps) => {
   const [tabValue, setTabValue] = React.useState(3);
   const handleChange = (e: React.MouseEvent, newValue: number) =>
     setTabValue(newValue);
 
   return (
-    <>
+    <Backdrop>
       <Container>
         <Header>
           <SideContainer>
@@ -100,8 +111,8 @@ const MainLayoutChild = ({
           </SwitchContainer>
         </Header>
       </Container>
-      <Main>{children}</Main>
-    </>
+      <main>{children}</main>
+    </Backdrop>
   );
 };
 
