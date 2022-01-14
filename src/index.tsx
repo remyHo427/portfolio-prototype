@@ -1,11 +1,5 @@
-import * as React from 'react';
-import { render } from 'react-dom';
+/** @jsx h */
+import { h, render } from 'preact';
 import App from './App';
-import { BrowserRouter } from 'react-router-dom';
 
-render(
-  <BrowserRouter>
-    <App />
-  </BrowserRouter>,
-  document.getElementById('root'),
-);
+render(<App />, document.getElementById('root'));

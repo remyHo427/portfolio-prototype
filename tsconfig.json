@@ -1,5 +1,6 @@
 {
   "compilerOptions": {
+    "lib": [ "DOM" ],
     "jsx": "react",
     "module": "CommonJS",
     "noImplicitAny": true,

@@ -2,13 +2,17 @@ const path = require('path');
 const HTMLWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
+  resolve: {
+    alias: {
+      react: 'preact/compat',
+      'react-dom': 'preact/compat',
+    },
+    extensions: ['.ts', '.tsx', '.js', '.jsx'],
+  },
   entry: './src/index.tsx',
   output: {
     path: path.resolve(__dirname, 'dist'),
     filename: 'bundle.js',
-  },
-  resolve: {
-    extensions: ['.ts', '.tsx', '.js'],
   },
   module: {
     rules: [

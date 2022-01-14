@@ -1,4 +1,6 @@
-import * as React from 'react';
+/** @jsx h @jsxFrag Fragment*/
+import { h, Fragment, VNode, cloneElement } from 'preact';
+import { useState } from 'preact/hooks';
 import GlobalStyle from '../components/GlobalStyle';
 import {
   ThemeProvider,
@@ -8,26 +10,26 @@ import {
 import { GenericProps } from '../types';
 
 const BaseLayout = ({ children }: GenericProps) => {
-  const [isDark, setDark] = React.useState(false);
+  const [isDark, setDark] = useState(false);
 
   return (
-    <>
+    <Fragment>
       <GlobalStyle />
       <ThemeProvider theme={isDark ? darkTheme : lightTheme}>
         {Array.isArray(children)
-          ? (children as React.ReactElement[]).map((child, index) =>
-              React.cloneElement(child, {
+          ? (children as VNode[]).map((child, index) =>
+              cloneElement(child, {
                 setDark,
                 isDark,
                 key: index,
               }),
             )
-          : React.cloneElement(children as React.ReactElement, {
+          : cloneElement(children as VNode, {
               setDark,
               isDark,
             })}
       </ThemeProvider>
-    </>
+    </Fragment>
   );
 };
 

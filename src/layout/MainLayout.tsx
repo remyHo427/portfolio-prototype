@@ -1,4 +1,6 @@
-import * as React from 'react';
+/** @jsx h */
+import { h } from 'preact';
+import { useState } from 'preact/hooks';
 import styled from 'styled-components';
 import BaseLayout from './BaseLayout';
 import { GenericProps } from '../types';
@@ -30,7 +32,7 @@ const Container = styled.div`
 
 const Header = styled.div`
   width: 100%;
-  height: 3rem;
+  height: 4rem;
   display: flex;
 `;
 
@@ -47,7 +49,7 @@ const HeaderTabs = styled(Tabs)`
 const HeaderTab = styled(Tab)`
   height: 100%;
   width: 20%;
-  font-size: 0.7rem;
+  font-size: 1rem;
 `;
 
 const SideContainer = styled.div`
@@ -59,9 +61,9 @@ const Logo = styled.div`
   width: 70%;
   margin: 0 auto 0 0;
   background-color: #1976d2;
-  height: 140%;
+  height: 150%;
   text-align: center;
-  padding: 1.25rem;
+  padding: 2rem;
   font-size: 1.25rem;
   color: ${(props) => props.theme.palette.text.secondary};
 `;
@@ -79,10 +81,12 @@ const MainLayoutChild = ({
   setDark,
   isDark,
 }: MainLayoutProps) => {
-  const [tabValue, setTabValue] = React.useState(3);
-  const handleChange = (e: React.MouseEvent, newValue: number) =>
+  const [tabValue, setTabValue] = useState(3);
+  // preact doesn't have SytheticEvent type needed by MUI Tabs
+  // have no choice but to use any for the time being.
+  const handleChange = (e: any, newValue: number) => {
     setTabValue(newValue);
-
+  };
   return (
     <Backdrop>
       <Container>

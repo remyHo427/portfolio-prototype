@@ -1,5 +1,5 @@
-import * as React from 'react';
+import { ComponentChildren } from 'preact';
 
 export interface GenericProps {
-  children: React.ReactNode[] | React.ReactNode;
+  children: ComponentChildren[] | ComponentChildren;
 }
