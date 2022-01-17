@@ -7,6 +7,7 @@ import { GenericProps } from '../types';
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 import Switch from '@mui/material/Switch';
+import Icon from '../components/Icon';
 import LightModeIcon from '@mui/icons-material/LightMode';
 import DarkModeIcon from '@mui/icons-material/DarkMode';
 
@@ -17,7 +18,6 @@ interface MainLayoutProps extends GenericProps {
 
 const Backdrop = styled.div`
   width: 100%;
-  height: 100%;
   position: absolute;
   top: 0;
   left: 0;
@@ -105,13 +105,9 @@ const MainLayoutChild = ({
             <HeaderTab label="Home" />
           </HeaderTabs>
           <SwitchContainer>
-            <LightModeIcon
-              style={{ width: '0.9rem', height: '0.9rem' }}
-            />
+            <Icon size="1rem" icon={<LightModeIcon />} />
             <Switch onChange={() => setDark(!isDark)} />
-            <DarkModeIcon
-              style={{ width: '0.9rem', height: '0.9rem' }}
-            />
+            <Icon size="1rem" icon={<DarkModeIcon />} />
           </SwitchContainer>
         </Header>
       </Container>
