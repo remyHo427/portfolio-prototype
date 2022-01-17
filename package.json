@@ -3,12 +3,14 @@
   "version": "1.0.0",
   "main": "index.js",
   "license": "MIT",
+  "homepage": "http://remyHo427.github.io/portfolio",
   "scripts": {
     "start": "webpack serve --mode development",
     "build": "webpack --mode production",
     "lint": "eslint . --fix --ext .ts --ext .tsx",
     "format": "prettier ./src --write",
-    "stat": "webpack --mode production --profile --json stats.json && webpack-bundle-analyzer stats.json"
+    "stat": "webpack --mode production --profile --json stats.json && webpack-bundle-analyzer stats.json",
+    "deploy": "yarn build && gh-pages -d dist"
   },
   "devDependencies": {
     "@emotion/react": "^11.7.1",
@@ -27,6 +29,7 @@
     "eslint-plugin": "^1.0.1",
     "eslint-plugin-prettier": "^4.0.0",
     "eslint-plugin-react": "^7.28.0",
+    "gh-pages": "^3.2.3",
     "html-webpack-plugin": "^5.5.0",
     "preact": "^10.6.4",
     "preact-compat": "^3.19.0",
