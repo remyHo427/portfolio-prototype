@@ -6,6 +6,7 @@ import Typography from '../components/Typography';
 import ExpandLessIcon from '@mui/icons-material/ExpandLess';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import Icon from './Icon';
+import Divider from '@mui/material/Divider';
 
 interface CollapsibleListProps {
   title: string;
@@ -13,22 +14,27 @@ interface CollapsibleListProps {
 }
 
 const Stripe = styled.div`
-  border: 1px black solid;
-  padding: 1rem;
+  padding: ${(props: { removeBottomGutter: boolean }) =>
+    props.removeBottomGutter ? '1rem' : '1rem 1rem 0 1rem'};
   display: flex;
   justify-content: space-between;
 `;
 const List = styled.ul`
   width: 100%;
-  padding: 1rem;
+  padding: 0.25rem 1rem 1rem 1rem;
 `;
-const ListItem = styled.li``;
+const ListItem = styled.li`
+  padding: 0.25rem;
+`;
 
 const CollapsibleList = ({ title, items }: CollapsibleListProps) => {
   const [isHidden, setHidden] = useState(true);
   return (
     <Fragment>
-      <Stripe onClick={() => setHidden(!isHidden)}>
+      <Stripe
+        onClick={() => setHidden(!isHidden)}
+        removeBottomGutter={isHidden}
+      >
         <Typography variant="h5">{title}</Typography>
         <Icon
           size="2rem"
@@ -44,6 +50,7 @@ const CollapsibleList = ({ title, items }: CollapsibleListProps) => {
           ))}
         </List>
       )}
+      <Divider />
     </Fragment>
   );
 };

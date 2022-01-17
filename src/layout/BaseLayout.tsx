@@ -1,5 +1,11 @@
 /** @jsx h @jsxFrag Fragment*/
-import { h, Fragment, VNode, cloneElement } from 'preact';
+import {
+  h,
+  Fragment,
+  VNode,
+  cloneElement,
+  FunctionComponent,
+} from 'preact';
 import { useState } from 'preact/hooks';
 import GlobalStyle from '../components/GlobalStyle';
 import {
@@ -7,9 +13,10 @@ import {
   darkTheme,
   lightTheme,
 } from '../components/ThemeProvider';
-import { GenericProps } from '../types';
 
-const BaseLayout = ({ children }: GenericProps) => {
+const BaseLayout: FunctionComponent<Record<string, unknown>> = ({
+  children,
+}) => {
   const [isDark, setDark] = useState(false);
 
   return (

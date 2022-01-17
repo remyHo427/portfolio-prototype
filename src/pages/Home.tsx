@@ -1,11 +1,14 @@
 /** @jsx h */
 import { h } from 'preact';
+import { useRef } from 'preact/hooks';
 import styled from 'styled-components';
 import MainLayout from '../layout/MainLayout';
 import Typography from '../components/Typography';
 import Button from '@mui/material/Button';
+import Divider from '@mui/material/Divider';
 
 import CollapsibleList from '../components/CollapsibleList';
+import Timeline from '../components/Timeline';
 
 const MainCard = styled.div`
   width: 1400px;
@@ -34,20 +37,16 @@ const LargeCard = styled.div`
   margin: auto;
   width: 1700px;
   display: flex;
-  align-items: center;
+  align-items: stretch;
   justify-content: center;
 `;
 const InnerCard = styled.div`
-  width: 40%;
-  height: 45rem;
-`;
-const Divider = styled.div`
-  width: 2.5px;
-  height: 45rem;
-  background-color: ${(props) => props.theme.palette.divider};
+  width: 42%;
+  min-width: 35rem;
 `;
 
 const Home = () => {
+  const scrollRef = useRef(null);
   return (
     <MainLayout>
       <MainCard>
@@ -78,26 +77,57 @@ const Home = () => {
         </TextContainer>
         <IllustrationContainer />
       </MainCard>
-      <LargeCard>
+      <LargeCard
+        ref={scrollRef}
+        onClick={() => scrollRef.current.scrollIntoView()}
+      >
         <InnerCard>
           <Typography variant="h2" align="center">
             Toolchain
           </Typography>
           <CollapsibleList
-            title="HTML, CSS and JS/TS"
+            title="Languages"
             items={[
-              'React & Preact',
-              'Styled Components',
-              'Sass',
-              'Material UI',
+              'JavaScript',
+              'TypeScript',
+              'Node.js',
+              'HTML',
+              'CSS',
             ]}
           />
+          <CollapsibleList
+            title="Frameworks"
+            items={['React', 'Preact', 'Svelte', 'Vue', 'Jest']}
+          />
+          <CollapsibleList
+            title="Development Tools"
+            items={[
+              'Webpack',
+              'Styled Components',
+              'Sass',
+              'Prettier',
+              'ESLint',
+            ]}
+          />
+          <CollapsibleList
+            title="Version Control"
+            items={['Git', 'GitHub', 'GitLab']}
+          />
         </InnerCard>
-        <Divider />
+        <Divider orientation="vertical" flexItem />
         <InnerCard>
           <Typography variant="h2" align="center">
             Experience
           </Typography>
+          <Timeline
+            data={[
+              { time: '2020-01-01', legend: 'start' },
+              { time: '2020-01-02', legend: 'start1' },
+              { time: '2020-01-03', legend: 'start2' },
+              { time: '2020-01-04', legend: 'start3' },
+              { time: '2020-01-05', legend: 'start4' },
+            ]}
+          />
         </InnerCard>
       </LargeCard>
     </MainLayout>

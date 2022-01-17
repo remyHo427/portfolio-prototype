@@ -1,9 +1,8 @@
 /** @jsx h */
-import { h } from 'preact';
+import { h, FunctionComponent } from 'preact';
 import { useState } from 'preact/hooks';
 import styled from 'styled-components';
 import BaseLayout from './BaseLayout';
-import { GenericProps } from '../types';
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 import Switch from '@mui/material/Switch';
@@ -11,7 +10,7 @@ import Icon from '../components/Icon';
 import LightModeIcon from '@mui/icons-material/LightMode';
 import DarkModeIcon from '@mui/icons-material/DarkMode';
 
-interface MainLayoutProps extends GenericProps {
+interface MainLayoutProps {
   isDark?: boolean;
   setDark?: React.Dispatch<React.SetStateAction<boolean>>;
 }
@@ -76,11 +75,11 @@ const SwitchContainer = styled(SideContainer)`
   color: ${(props) => props.theme.palette.text.secondary};
 `;
 
-const MainLayoutChild = ({
+const MainLayoutChild: FunctionComponent<MainLayoutProps> = ({
   children,
   setDark,
   isDark,
-}: MainLayoutProps) => {
+}) => {
   const [tabValue, setTabValue] = useState(3);
   // preact doesn't have SytheticEvent type needed by MUI Tabs
   // have no choice but to use any for the time being.
@@ -116,7 +115,9 @@ const MainLayoutChild = ({
   );
 };
 
-const MainLayout = ({ children }: GenericProps) => (
+const MainLayout: FunctionComponent<Record<string, unknown>> = ({
+  children,
+}) => (
   <BaseLayout>
     <MainLayoutChild>{children}</MainLayoutChild>
   </BaseLayout>
