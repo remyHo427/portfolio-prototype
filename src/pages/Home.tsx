@@ -45,6 +45,29 @@ const InnerCard = styled.div`
   min-width: 35rem;
 `;
 
+const timelineData = [
+  {
+    time: '2021-01-01',
+    title: 'item1',
+    desc: 'this is a description',
+  },
+  {
+    time: '2021-01-02',
+    title: 'item2',
+    desc: 'this is a description',
+  },
+  {
+    time: '2021-01-03',
+    title: 'item3',
+    desc: 'this is a description',
+  },
+  {
+    time: '2021-01-04',
+    title: 'item4',
+    desc: 'this is a description',
+  },
+];
+
 const Home = () => {
   const scrollRef = useRef(null);
   return (
@@ -82,7 +105,7 @@ const Home = () => {
         onClick={() => scrollRef.current.scrollIntoView()}
       >
         <InnerCard>
-          <Typography variant="h2" align="center">
+          <Typography variant="h2" align="center" gutterBottom>
             Toolchain
           </Typography>
           <CollapsibleList
@@ -116,10 +139,10 @@ const Home = () => {
         </InnerCard>
         <Divider orientation="vertical" flexItem />
         <InnerCard>
-          <Typography variant="h2" align="center">
+          <Typography variant="h2" align="center" gutterBottom>
             Experience
           </Typography>
-          <Timeline />
+          <Timeline data={timelineData} />
         </InnerCard>
       </LargeCard>
     </MainLayout>

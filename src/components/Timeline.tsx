@@ -1,9 +1,10 @@
 /** @jsx h */
-import { Fragment, h } from 'preact';
+import { Fragment, h, FunctionComponent } from 'preact';
 import styled from 'styled-components';
 import Divider from '@mui/material/Divider';
 import Card from '@mui/material/Card';
 import Typography from './Typography';
+import { useState } from 'preact/hooks';
 
 const TimelineContainer = styled.div`
   display: flex;
@@ -15,7 +16,7 @@ const InnerCard = styled.div`
 `;
 const TimelineItemContainer = styled.div`
   width: 100%;
-  height: 66.5px;
+  min-height: 66.5px;
 `;
 const TimelineItemCard = styled(Card)`
   width: 90%;
@@ -26,7 +27,7 @@ const TimelineItemCard = styled(Card)`
 const TimelineItemTypography = styled(Typography)`
   display: inline-block;
   & + & {
-    margin-left: 1rem;
+    margin-left: 0.25rem;
   }
 `;
 const DottedDivider = styled(Divider)`
@@ -50,37 +51,71 @@ const DottedDivider = styled(Divider)`
   }
 `;
 
-const data = [
-  { time: '2021-01-01', legend: 'item1' },
-  { time: '2021-01-02', legend: 'item2' },
-  { time: '2021-01-03', legend: 'item3' },
-  { time: '2021-01-04', legend: 'item4' },
-];
+interface TimelineProps {
+  data: {
+    time: string;
+    title: string;
+    desc: string;
+  }[];
+}
+interface TimelineItemProps {
+  time: string;
+  title: string;
+  desc: string;
+  index: number;
+  setIndex?: React.Dispatch<React.SetStateAction<number>>;
+  permanentlyHidden?: boolean;
+  expand?: boolean;
+}
 
-const Timeline = () => {
+const Timeline: FunctionComponent<TimelineProps> = ({ data }) => {
+  const [expandIndex, setExpandIndex] = useState(-1);
+
   return (
     <TimelineContainer>
       <InnerCard>
-        {data.map((c, i) =>
+        {data.map((item, i) =>
           i % 2 == 0 ? (
             <Fragment>
+              <TimelineItem
+                {...item}
+                setIndex={setExpandIndex}
+                index={i}
+              />
               <DottedDivider dotPosition="right" />
-              <TimelineItem />
             </Fragment>
           ) : (
-            <TimelineEmptyItem />
+            <Fragment>
+              <TimelineItem
+                {...item}
+                index={i}
+                permanentlyHidden
+                expand={expandIndex == i}
+              />
+            </Fragment>
           ),
         )}
       </InnerCard>
       <Divider orientation="vertical" flexItem />
       <InnerCard>
-        {data.map((c, i) =>
+        {data.map((item, i) =>
           i % 2 == 0 ? (
-            <TimelineEmptyItem />
+            <Fragment>
+              <TimelineItem
+                {...item}
+                index={i}
+                permanentlyHidden
+                expand={expandIndex == i}
+              />
+            </Fragment>
           ) : (
             <Fragment>
+              <TimelineItem
+                {...item}
+                setIndex={setExpandIndex}
+                index={i}
+              />
               <DottedDivider dotPosition="left" />
-              <TimelineItem />
             </Fragment>
           ),
         )}
@@ -88,20 +123,43 @@ const Timeline = () => {
     </TimelineContainer>
   );
 };
-const TimelineItem = () => (
-  <TimelineItemContainer>
-    <TimelineItemCard variant="outlined">
-      <TimelineItemTypography variant="h5">
-        title
-      </TimelineItemTypography>
-      <TimelineItemTypography variant="subtitle2">
-        2020
-      </TimelineItemTypography>
-    </TimelineItemCard>
-  </TimelineItemContainer>
-);
-const TimelineEmptyItem = () => (
-  <TimelineItemContainer></TimelineItemContainer>
-);
+const TimelineItem = ({
+  time,
+  title,
+  desc,
+  setIndex,
+  index,
+  permanentlyHidden = false,
+  expand = false,
+}: TimelineItemProps) => {
+  const [isHidden, setHidden] = useState(true);
+  return (
+    <TimelineItemContainer
+      onMouseEnter={() => {
+        setIndex?.(index);
+        !permanentlyHidden && setHidden(false);
+      }}
+      onMouseLeave={() => {
+        setIndex?.(-1);
+        !permanentlyHidden && setHidden(true);
+      }}
+      style={{ visibility: permanentlyHidden ? 'hidden' : 'visible' }}
+    >
+      <TimelineItemCard variant="outlined">
+        <TimelineItemTypography variant="h5">
+          {title}
+        </TimelineItemTypography>
+        <TimelineItemTypography variant="subtitle2">
+          {time}
+        </TimelineItemTypography>
+        {isHidden && !expand ? null : (
+          <Typography variant="body2" paragraph>
+            {desc}
+          </Typography>
+        )}
+      </TimelineItemCard>
+    </TimelineItemContainer>
+  );
+};
 
 export default Timeline;

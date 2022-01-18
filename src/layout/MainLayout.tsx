@@ -81,7 +81,7 @@ const MainLayoutChild: FunctionComponent<MainLayoutProps> = ({
   isDark,
 }) => {
   const [tabValue, setTabValue] = useState(3);
-  // preact doesn't have SytheticEvent type needed by MUI Tabs
+  // preact doesn't have SyntheticEvent type needed by MUI Tabs
   // have no choice but to use any for the time being.
   const handleChange = (e: any, newValue: number) => {
     setTabValue(newValue);
