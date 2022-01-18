@@ -119,15 +119,7 @@ const Home = () => {
           <Typography variant="h2" align="center">
             Experience
           </Typography>
-          <Timeline
-            data={[
-              { time: '2020-01-01', legend: 'start' },
-              { time: '2020-01-02', legend: 'start1' },
-              { time: '2020-01-03', legend: 'start2' },
-              { time: '2020-01-04', legend: 'start3' },
-              { time: '2020-01-05', legend: 'start4' },
-            ]}
-          />
+          <Timeline />
         </InnerCard>
       </LargeCard>
     </MainLayout>

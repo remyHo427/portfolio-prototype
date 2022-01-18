@@ -1,17 +1,15 @@
-import {
-  ThemeProvider,
-  createTheme,
-  Theme,
-} from '@mui/material/styles';
+import { ThemeProvider, createTheme } from '@mui/material/styles';
 
-const lightTheme: Theme = createTheme({
+const lightTheme = createTheme({
   palette: {
     mode: 'light',
+    divider: '#e0e0e0',
   },
 });
-const darkTheme: Theme = createTheme({
+const darkTheme = createTheme({
   palette: {
     mode: 'dark',
+    divider: '#2e2e2e',
   },
 });
 
