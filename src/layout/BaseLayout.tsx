@@ -7,7 +7,6 @@ import {
   FunctionComponent,
 } from 'preact';
 import { useState } from 'preact/hooks';
-import GlobalStyle from '../components/GlobalStyle';
 import {
   ThemeProvider,
   darkTheme,
@@ -21,7 +20,6 @@ const BaseLayout: FunctionComponent<Record<string, unknown>> = ({
 
   return (
     <Fragment>
-      <GlobalStyle />
       <ThemeProvider theme={isDark ? darkTheme : lightTheme}>
         {Array.isArray(children)
           ? (children as VNode[]).map((child, index) =>

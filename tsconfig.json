@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "lib": [ "DOM" ],
+    "lib": [ "DOM", "DOM.Iterable", "ESNext"],
     "jsx": "react",
     "module": "CommonJS",
     "noImplicitAny": true,

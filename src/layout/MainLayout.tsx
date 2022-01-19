@@ -23,18 +23,15 @@ const Backdrop = styled.div`
   background-color: ${(props) =>
     props.theme.palette.background.paper};
 `;
-
 const Container = styled.div`
   margin: auto;
   width: 1400px;
 `;
-
 const Header = styled.div`
   width: 100%;
   height: 4rem;
   display: flex;
 `;
-
 const HeaderTabs = styled(Tabs)`
   height: 100%;
   width: 60%;
@@ -44,18 +41,15 @@ const HeaderTabs = styled(Tabs)`
     flex-direction: row-reverse;
   }
 `;
-
 const HeaderTab = styled(Tab)`
   height: 100%;
   width: 20%;
   font-size: 1rem;
 `;
-
 const SideContainer = styled.div`
   height: 100%;
   width: 20%;
 `;
-
 const Logo = styled.div`
   width: 70%;
   margin: 0 auto 0 0;
@@ -66,7 +60,6 @@ const Logo = styled.div`
   font-size: 1.25rem;
   color: ${(props) => props.theme.palette.text.secondary};
 `;
-
 const SwitchContainer = styled(SideContainer)`
   display: flex;
   justify-content: center;
@@ -81,11 +74,6 @@ const MainLayoutChild: FunctionComponent<MainLayoutProps> = ({
   isDark,
 }) => {
   const [tabValue, setTabValue] = useState(3);
-  // preact doesn't have SyntheticEvent type needed by MUI Tabs
-  // have no choice but to use any for the time being.
-  const handleChange = (e: any, newValue: number) => {
-    setTabValue(newValue);
-  };
   return (
     <Backdrop>
       <Container>
@@ -95,7 +83,9 @@ const MainLayoutChild: FunctionComponent<MainLayoutProps> = ({
           </SideContainer>
           <HeaderTabs
             value={tabValue}
-            onChange={handleChange}
+            onChange={(e: unknown, newVal: number) =>
+              setTabValue(newVal)
+            }
             aria-label="header tabs"
           >
             <HeaderTab label="Contact" />

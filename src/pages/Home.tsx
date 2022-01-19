@@ -9,11 +9,12 @@ import Divider from '@mui/material/Divider';
 
 import CollapsibleList from '../components/CollapsibleList';
 import Timeline from '../components/Timeline';
+import GridView from '../components/GridView';
 
 const MainCard = styled.div`
   width: 1400px;
   margin: 0 auto;
-  height: 45rem;
+  height: ${(props: { height: string }) => props.height};
   display: flex;
   justify-content: center;
   align-items: center;
@@ -22,9 +23,14 @@ const TextContainer = styled.div`
   width: 50%;
   text-align: left;
 `;
-const IllustrationContainer = styled.div`
+const HalfContainer = styled.div`
   width: 50%;
   height: 100%;
+`;
+const ButtonRightContainer = styled(HalfContainer)`
+  display: flex;
+  justify-content: right;
+  align-items: center;
 `;
 const MainButton = styled(Button)`
   height: 3rem;
@@ -33,23 +39,15 @@ const MainButton = styled(Button)`
     margin-left: 1rem;
   }
 `;
-const LargeCard = styled.div`
-  margin: auto;
-  width: 1700px;
-  display: flex;
+const LargeCard = styled(MainCard)`
   align-items: stretch;
-  justify-content: center;
-`;
-const InnerCard = styled.div`
-  width: 42%;
-  min-width: 35rem;
 `;
 
 const timelineData = [
   {
     time: '2021-01-01',
     title: 'item1',
-    desc: 'this is a description',
+    desc: `this is a description`,
   },
   {
     time: '2021-01-02',
@@ -72,7 +70,7 @@ const Home = () => {
   const scrollRef = useRef(null);
   return (
     <MainLayout>
-      <MainCard>
+      <MainCard height="45rem">
         <TextContainer>
           <Typography variant="h5">Hello! My name is</Typography>
           <Typography
@@ -98,13 +96,14 @@ const Home = () => {
           <MainButton variant="contained">My projects</MainButton>
           <MainButton variant="contained">My contact</MainButton>
         </TextContainer>
-        <IllustrationContainer />
+        <HalfContainer />
       </MainCard>
       <LargeCard
+        height="auto"
         ref={scrollRef}
         onClick={() => scrollRef.current.scrollIntoView()}
       >
-        <InnerCard>
+        <HalfContainer>
           <Typography variant="h2" align="center" gutterBottom>
             Toolchain
           </Typography>
@@ -136,15 +135,52 @@ const Home = () => {
             title="Version Control"
             items={['Git', 'GitHub', 'GitLab']}
           />
-        </InnerCard>
+        </HalfContainer>
         <Divider orientation="vertical" flexItem />
-        <InnerCard>
+        <HalfContainer>
           <Typography variant="h2" align="center" gutterBottom>
             Experience
           </Typography>
           <Timeline data={timelineData} />
-        </InnerCard>
+        </HalfContainer>
       </LargeCard>
+      <MainCard height="17.5rem">
+        <TextContainer>
+          <Typography variant="h4" gutterBottom>
+            Let&apos;s have a chat!
+          </Typography>
+          <Typography variant="subtitle1">
+            You can reach me via Discord or email, I&apos;m always
+            happy to meet new people. Potential employers, fellow
+            developers, graphic designers, all are welcomed! :)
+          </Typography>
+        </TextContainer>
+        <ButtonRightContainer>
+          <MainButton variant="contained">Discord</MainButton>
+          <MainButton variant="contained">Email</MainButton>
+        </ButtonRightContainer>
+      </MainCard>
+      <MainCard height="auto">
+        <HalfContainer>
+          <Typography align="center" variant="h2">
+            Workflow
+          </Typography>
+          <Typography paragraph variant="body1" align="center">
+            The approach I use to build my personal projects
+          </Typography>
+          <GridView />
+        </HalfContainer>
+        <Divider orientation="vertical" flexItem />
+        <HalfContainer>
+          <Typography align="center" variant="h2">
+            Projects
+          </Typography>
+          <Typography paragraph variant="body1" align="center">
+            Here are my projects, using said approach.
+          </Typography>
+          <GridView />
+        </HalfContainer>
+      </MainCard>
     </MainLayout>
   );
 };
