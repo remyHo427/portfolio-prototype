@@ -39,6 +39,7 @@
     "html-webpack-plugin": "^5.5.0",
     "preact": "^10.6.4",
     "preact-compat": "^3.19.0",
+    "preact-router": "^4.0.0",
     "prettier": "^2.5.1",
     "source-map-loader": "^3.0.1",
     "style-loader": "^3.3.1",

@@ -2,11 +2,11 @@
 import { h, Fragment } from 'preact';
 import { useState } from 'preact/hooks';
 import styled from 'styled-components';
-import Typography from '../components/Typography';
+import Typography from '../../components/Typography';
 import ExpandLessIcon from '@mui/icons-material/ExpandLess';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
-import Icon from './Icon';
-import Divider from './Divider';
+import Icon from '../../components/Icon';
+import Divider from '../../components/Divider';
 
 interface CollapsibleListProps {
   title: string;

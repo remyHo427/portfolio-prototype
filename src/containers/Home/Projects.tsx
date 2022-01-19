@@ -1,6 +1,6 @@
 /** @jsx h */
 import { h } from 'preact';
-import GridView from '../../components/GridView';
+import GridView from './gridView';
 import { StripeCard, HalfContainer } from './common';
 import Typography from '../../components/Typography';
 import Divider from '../../components/Divider';

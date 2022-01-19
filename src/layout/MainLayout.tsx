@@ -1,5 +1,5 @@
 /** @jsx h */
-import { h, FunctionComponent } from 'preact';
+import { h, FunctionComponent, AnyComponent } from 'preact';
 import { useState } from 'preact/hooks';
 import styled from 'styled-components';
 import BaseLayout from './BaseLayout';
@@ -9,6 +9,7 @@ import Switch from '@mui/material/Switch';
 import Icon from '../components/Icon';
 import LightModeIcon from '@mui/icons-material/LightMode';
 import DarkModeIcon from '@mui/icons-material/DarkMode';
+import { Link } from 'preact-router/match';
 
 interface MainLayoutProps {
   isDark?: boolean;

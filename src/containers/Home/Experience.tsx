@@ -3,9 +3,9 @@ import { h } from 'preact';
 import { useRef } from 'preact/hooks';
 import { StripeCard, HalfContainer } from './common';
 import styled from 'styled-components';
-import CollapsibleList from '../../components/CollapsibleList';
+import CollapsibleList from './collapsibleList';
 import Typography from '../../components/Typography';
-import Timeline from '../../components/Timeline';
+import Timeline from './timeline';
 import Divider from '../../components/Divider';
 
 const StretchCard = styled(StripeCard)`

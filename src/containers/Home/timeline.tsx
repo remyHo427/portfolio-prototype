@@ -1,10 +1,10 @@
 /** @jsx h */
 import { Fragment, h, FunctionComponent } from 'preact';
 import styled from 'styled-components';
-import Divider from './Divider';
 import Card from '@mui/material/Card';
-import Typography from './Typography';
 import { useState } from 'preact/hooks';
+import Divider from '../../components/Divider';
+import Typography from '../../components/Typography';
 
 const TimelineContainer = styled.div`
   display: flex;
