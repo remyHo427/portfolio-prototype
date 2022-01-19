@@ -10,10 +10,16 @@ import './styles/global.css';
 
 import Router from 'preact-router';
 import Home from './pages/Home';
+import About from './pages/About';
+import Projects from './pages/Projects';
+import Contacts from './pages/Contacts';
 
 const App = () => (
   <Router>
     <Home path="/" />
+    <About path="/about" />
+    <Projects path="/projects" />
+    <Contacts path="/contact" />
   </Router>
 );
 

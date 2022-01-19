@@ -1,15 +1,12 @@
 /** @jsx h */
-import { h, FunctionComponent, AnyComponent } from 'preact';
-import { useState } from 'preact/hooks';
+import { h, FunctionComponent } from 'preact';
+import Link from '../components/Link';
 import styled from 'styled-components';
 import BaseLayout from './BaseLayout';
-import Tabs from '@mui/material/Tabs';
-import Tab from '@mui/material/Tab';
 import Switch from '@mui/material/Switch';
 import Icon from '../components/Icon';
 import LightModeIcon from '@mui/icons-material/LightMode';
 import DarkModeIcon from '@mui/icons-material/DarkMode';
-import { Link } from 'preact-router/match';
 
 interface MainLayoutProps {
   isDark?: boolean;
@@ -33,17 +30,16 @@ const Header = styled.div`
   height: 4rem;
   display: flex;
 `;
-const HeaderTabs = styled(Tabs)`
+const HeaderTabs = styled.div`
   height: 100%;
   width: 60%;
-
-  & > div > div {
-    height: 100%;
-    flex-direction: row-reverse;
-  }
+  display: flex;
+  flex-direction: row-reverse;
 `;
-const HeaderTab = styled(Tab)`
+const HeaderTab = styled(Link)`
+  display: inline-block;
   height: 100%;
+  padding: 2rem;
   width: 20%;
   font-size: 1rem;
 `;
@@ -74,7 +70,6 @@ const MainLayoutChild: FunctionComponent<MainLayoutProps> = ({
   setDark,
   isDark,
 }) => {
-  const [tabValue, setTabValue] = useState(3);
   return (
     <Backdrop>
       <Container>
@@ -82,17 +77,11 @@ const MainLayoutChild: FunctionComponent<MainLayoutProps> = ({
           <SideContainer>
             <Logo>Logo</Logo>
           </SideContainer>
-          <HeaderTabs
-            value={tabValue}
-            onChange={(e: unknown, newVal: number) =>
-              setTabValue(newVal)
-            }
-            aria-label="header tabs"
-          >
-            <HeaderTab label="Contact" />
-            <HeaderTab label="Projects" />
-            <HeaderTab label="About" />
-            <HeaderTab label="Home" />
+          <HeaderTabs>
+            <HeaderTab href="/contact">Contact</HeaderTab>
+            <HeaderTab href="/projects">Projects</HeaderTab>
+            <HeaderTab href="/about">About</HeaderTab>
+            <HeaderTab href="/">Home</HeaderTab>
           </HeaderTabs>
           <SwitchContainer>
             <Icon size="1rem" icon={<LightModeIcon />} />
