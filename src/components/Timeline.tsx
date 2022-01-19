@@ -1,7 +1,7 @@
 /** @jsx h */
 import { Fragment, h, FunctionComponent } from 'preact';
 import styled from 'styled-components';
-import Divider from '@mui/material/Divider';
+import Divider from './Divider';
 import Card from '@mui/material/Card';
 import Typography from './Typography';
 import { useState } from 'preact/hooks';

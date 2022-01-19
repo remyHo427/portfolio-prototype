@@ -6,7 +6,7 @@ import Typography from '../components/Typography';
 import ExpandLessIcon from '@mui/icons-material/ExpandLess';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import Icon from './Icon';
-import Divider from '@mui/material/Divider';
+import Divider from './Divider';
 
 interface CollapsibleListProps {
   title: string;
