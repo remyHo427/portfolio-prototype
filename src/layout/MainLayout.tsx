@@ -1,10 +1,10 @@
 /** @jsx h */
 import { h, FunctionComponent } from 'preact';
-import Link from '../components/Link';
 import styled from 'styled-components';
 import BaseLayout from './BaseLayout';
 import Switch from '@mui/material/Switch';
 import Icon from '../components/Icon';
+import Tabs from '../containers/Tabs';
 import LightModeIcon from '@mui/icons-material/LightMode';
 import DarkModeIcon from '@mui/icons-material/DarkMode';
 
@@ -29,19 +29,6 @@ const Header = styled.div`
   width: 100%;
   height: 4rem;
   display: flex;
-`;
-const HeaderTabs = styled.div`
-  height: 100%;
-  width: 60%;
-  display: flex;
-  flex-direction: row-reverse;
-`;
-const HeaderTab = styled(Link)`
-  display: inline-block;
-  height: 100%;
-  padding: 2rem;
-  width: 20%;
-  font-size: 1rem;
 `;
 const SideContainer = styled.div`
   height: 100%;
@@ -77,12 +64,14 @@ const MainLayoutChild: FunctionComponent<MainLayoutProps> = ({
           <SideContainer>
             <Logo>Logo</Logo>
           </SideContainer>
-          <HeaderTabs>
-            <HeaderTab href="/contact">Contact</HeaderTab>
-            <HeaderTab href="/projects">Projects</HeaderTab>
-            <HeaderTab href="/about">About</HeaderTab>
-            <HeaderTab href="/">Home</HeaderTab>
-          </HeaderTabs>
+          <Tabs
+            data={[
+              { href: '/contact', label: 'Contact' },
+              { href: '/projects', label: 'Projects' },
+              { href: '/about', label: 'About' },
+              { href: '/', label: 'Home' },
+            ]}
+          />
           <SwitchContainer>
             <Icon size="1rem" icon={<LightModeIcon />} />
             <Switch onChange={() => setDark(!isDark)} />

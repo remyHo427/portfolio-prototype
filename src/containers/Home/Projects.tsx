@@ -1,6 +1,6 @@
 /** @jsx h */
 import { h } from 'preact';
-import GridView from './gridView';
+import GridView, { Window } from './gridView';
 import { StripeCard, HalfContainer } from './common';
 import Typography from '../../components/Typography';
 import Divider from '../../components/Divider';
@@ -14,7 +14,14 @@ const Projects = () => (
       <Typography paragraph variant="body1" align="center">
         The approach I use to build my personal projects
       </Typography>
-      <GridView />
+      <GridView>
+        <Window>1</Window>
+        <Window>2</Window>
+        <Window>3</Window>
+        <Window>4</Window>
+        <Window>5</Window>
+        <Window>6</Window>
+      </GridView>
     </HalfContainer>
     <Divider orientation="vertical" flexItem />
     <HalfContainer>
@@ -24,7 +31,9 @@ const Projects = () => (
       <Typography paragraph variant="body1" align="center">
         Here are my projects, using said approach.
       </Typography>
-      <GridView />
+      <GridView>
+        <Window>1</Window>
+      </GridView>
     </HalfContainer>
   </StripeCard>
 );
