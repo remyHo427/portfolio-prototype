@@ -7,7 +7,7 @@ const TabsContainer = styled.div`
   height: 100%;
   width: 60%;
   display: flex;
-  flex-direction: row-reverse;
+  justify-content: flex-end;
 `;
 const Tab = styled.a`
   display: inline-block;
@@ -17,17 +17,28 @@ const Tab = styled.a`
   display: flex;
   justify-content: center;
   align-items: center;
+  border-color: ${(props) => props.theme.palette.primary.main};
+  border-bottom: ${(props: { selected: boolean }) =>
+    props.selected ? '5px solid' : 'none'};
 `;
 
 const Tabs: FunctionComponent<{
   data: { href: string; label: string }[];
-}> = ({ data }) => (
-  <TabsContainer>
-    {data.map(({ href, label }, i) => (
-      <Tab key={i} href={href}>
-        <Typography>{label}</Typography>
-      </Tab>
-    ))}
-  </TabsContainer>
-);
+}> = ({ data }) => {
+  const selectedItem = localStorage.getItem('currentPage');
+  return (
+    <TabsContainer>
+      {data.map(({ href, label }, i) => (
+        <Tab
+          key={i}
+          href={href}
+          onClick={() => localStorage.setItem('currentPage', label)}
+          selected={selectedItem == label}
+        >
+          <Typography>{label}</Typography>
+        </Tab>
+      ))}
+    </TabsContainer>
+  );
+};
 export default Tabs;

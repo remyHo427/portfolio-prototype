@@ -66,15 +66,18 @@ const MainLayoutChild: FunctionComponent<MainLayoutProps> = ({
           </SideContainer>
           <Tabs
             data={[
-              { href: '/contact', label: 'Contact' },
-              { href: '/projects', label: 'Projects' },
-              { href: '/about', label: 'About' },
               { href: '/', label: 'Home' },
+              { href: '/about', label: 'About' },
+              { href: '/projects', label: 'Projects' },
+              { href: '/contact', label: 'Contact' },
             ]}
           />
           <SwitchContainer>
             <Icon size="1rem" icon={<LightModeIcon />} />
-            <Switch onChange={() => setDark(!isDark)} />
+            <Switch
+              defaultChecked={isDark}
+              onChange={() => setDark(!isDark)}
+            />
             <Icon size="1rem" icon={<DarkModeIcon />} />
           </SwitchContainer>
         </Header>

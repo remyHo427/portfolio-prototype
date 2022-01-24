@@ -6,7 +6,7 @@ import {
   cloneElement,
   FunctionComponent,
 } from 'preact';
-import { useState } from 'preact/hooks';
+import { useEffect, useState } from 'preact/hooks';
 import {
   ThemeProvider,
   darkTheme,
@@ -16,8 +16,9 @@ import {
 const BaseLayout: FunctionComponent<Record<string, unknown>> = ({
   children,
 }) => {
-  const [isDark, setDark] = useState(false);
-
+  const [isDark, setDark] = useState(
+    window.matchMedia('(prefers-color-scheme: dark)').matches,
+  );
   return (
     <Fragment>
       <ThemeProvider theme={isDark ? darkTheme : lightTheme}>
