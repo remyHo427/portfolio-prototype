@@ -1,16 +1,15 @@
 /** @jsx h */
 import { h } from 'preact';
 import Typography from '../../components/Typography';
-import {
-  StripeCard,
-  RectButton,
+import HomeCard, {
   HalfContainer,
   TextContainer,
-} from './common';
+} from './components/HomeCard';
+import RectButton from './components/RectButton';
 
 const Hero = () => {
   return (
-    <StripeCard height="45rem">
+    <HomeCard height="45rem">
       <TextContainer>
         <Typography variant="h5">Hello! My name is</Typography>
         <Typography
@@ -37,7 +36,7 @@ const Hero = () => {
         <RectButton variant="contained">My contact</RectButton>
       </TextContainer>
       <HalfContainer />
-    </StripeCard>
+    </HomeCard>
   );
 };
 

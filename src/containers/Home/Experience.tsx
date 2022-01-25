@@ -1,14 +1,14 @@
 /** @jsx h */
 import { h } from 'preact';
 import { useRef } from 'preact/hooks';
-import { StripeCard, HalfContainer } from './common';
+import HomeCard, { HalfContainer } from './components/HomeCard';
 import styled from 'styled-components';
-import CollapsibleList from './collapsibleList';
+import CollapsibleList from './components/collapsibleList';
 import Typography from '../../components/Typography';
-import Timeline from './timeline';
+import Timeline from './components/timeline';
 import Divider from '../../components/Divider';
 
-const StretchCard = styled(StripeCard)`
+const StretchCard = styled(HomeCard)`
   align-items: stretch;
 `;
 
@@ -38,11 +38,7 @@ const timelineData = [
 const Experience = () => {
   const scrollRef = useRef(null);
   return (
-    <StretchCard
-      height="auto"
-      ref={scrollRef}
-      onClick={() => scrollRef.current.scrollIntoView()}
-    >
+    <StretchCard height="auto" ref={scrollRef}>
       <HalfContainer>
         <Typography variant="h2" align="center" gutterBottom>
           Toolchain

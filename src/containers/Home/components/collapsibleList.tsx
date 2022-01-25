@@ -2,16 +2,11 @@
 import { h, Fragment } from 'preact';
 import { useState } from 'preact/hooks';
 import styled from 'styled-components';
-import Typography from '../../components/Typography';
+import Typography from '../../../components/Typography';
 import ExpandLessIcon from '@mui/icons-material/ExpandLess';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
-import Icon from '../../components/Icon';
-import Divider from '../../components/Divider';
-
-interface CollapsibleListProps {
-  title: string;
-  items: string[];
-}
+import Icon from '../../../components/Icon';
+import Divider from '../../../components/Divider';
 
 const Stripe = styled.div`
   padding: ${(props: { removeBottomGutter: boolean }) =>
@@ -27,7 +22,13 @@ const ListItem = styled.li`
   padding: 0.25rem;
 `;
 
-const CollapsibleList = ({ title, items }: CollapsibleListProps) => {
+const CollapsibleList = ({
+  title,
+  items,
+}: {
+  title: string;
+  items: string[];
+}) => {
   const [isHidden, setHidden] = useState(true);
   return (
     <Fragment>

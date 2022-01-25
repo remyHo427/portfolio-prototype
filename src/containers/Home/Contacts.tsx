@@ -1,11 +1,12 @@
 /** @jsx h */
 import { h } from 'preact';
-import { StripeCard, HalfContainer, RectButton } from './common';
+import HomeCard, { HalfContainer } from './components/HomeCard';
+import RectButton from './components/RectButton';
 import TextField from '@mui/material/TextField';
 import Typography from '../../components/Typography';
 import styled from 'styled-components';
 
-const ContactStripeCard = styled(StripeCard)`
+const ContactStripeCard = styled(HomeCard)`
   padding: 2.5rem;
 `;
 const FormContainer = styled.form`

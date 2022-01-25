@@ -7,8 +7,8 @@ import {
 } from 'preact';
 import styled from 'styled-components';
 import { useState } from 'preact/hooks';
-import Icon from '../../components/Icon';
-import Button from '../../components/Button';
+import Icon from '../../../components/Icon';
+import Button from '../../../components/Button';
 import ArrowForwardIos from '@mui/icons-material/ArrowForwardIos';
 import ArrowBackwardIos from '@mui/icons-material/ArrowBackIos';
 

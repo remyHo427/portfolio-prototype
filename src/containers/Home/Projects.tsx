@@ -1,8 +1,8 @@
 /** @jsx h */
 import { h } from 'preact';
 import styled from 'styled-components';
-import GridView, { BigWindow } from './gridView';
-import { StripeCard, HalfContainer } from './common';
+import GridView, { BigWindow } from './components/gridView';
+import HomeCard, { HalfContainer } from './components/HomeCard';
 import Typography from '../../components/Typography';
 import Divider from '../../components/Divider';
 
@@ -39,7 +39,7 @@ const WorkflowWindowContainer = styled(BigWindow)`
 `;
 
 const Projects = () => (
-  <StripeCard height="auto">
+  <HomeCard height="auto">
     <HalfContainer>
       <Typography align="center" variant="h2">
         Workflow
@@ -68,7 +68,7 @@ const Projects = () => (
       </Typography>
       <GridView />
     </HalfContainer>
-  </StripeCard>
+  </HomeCard>
 );
 
 const WorkflowWindow = ({
