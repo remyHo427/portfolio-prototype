@@ -1,6 +1,7 @@
 /** @jsx h */
 import { h } from 'preact';
 import HomeCard, { HalfContainer } from '../components/HomeCard';
+import Divider from '../components/Divider';
 import RectButton from '../components/RectButton';
 import TextField from '@mui/material/TextField';
 import Typography from '../components/Typography';
@@ -16,34 +17,32 @@ const FormContainer = styled.form`
   flex-direction: column;
   row-gap: 1rem;
 `;
-const RowContainer = styled.div`
-  display: flex;
-  column-gap: 1rem;
-`;
-const FlexTextField = styled(TextField)`
-  width: 48.9%;
+const ContactTextField = styled(TextField)`
+  width: 80%;
+  margin: 0 auto;
 `;
 
 const Contacts = () => (
   <ContactStripeCard height="35rem">
     <FormContainer>
-      <Typography variant="h2" gutterBottom>
+      <Typography variant="h2" gutterBottom align="center">
         Send an email
       </Typography>
-      <RowContainer>
-        <FlexTextField label="Name" variant="outlined" />
-        <FlexTextField label="Address" variant="outlined" />
-      </RowContainer>
-      <TextField label="Subject" variant="outlined" />
-      <TextField
+      <ContactTextField label="Name" variant="outlined" />
+      <ContactTextField label="Address" variant="outlined" />
+      <ContactTextField label="Subject" variant="outlined" />
+      <ContactTextField
         label="Message"
         variant="outlined"
         multiline
         rows={5}
         style={{ marginBottom: '1rem' }}
       />
-      <RectButton variant="contained">send</RectButton>
+      <RectButton variant="contained" style={{ margin: '0 auto' }}>
+        send
+      </RectButton>
     </FormContainer>
+    <Divider flexItem orientation="vertical" />
     <HalfContainer />
   </ContactStripeCard>
 );

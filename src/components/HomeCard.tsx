@@ -9,7 +9,7 @@ const StripeCard = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  &:not(:first-child) {
+  &:not(:first-child):not(:last-child) {
     margin-bottom: 5rem;
   }
 `;
