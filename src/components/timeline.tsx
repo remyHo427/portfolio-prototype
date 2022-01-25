@@ -3,8 +3,8 @@ import { Fragment, h, FunctionComponent } from 'preact';
 import styled from 'styled-components';
 import Card from '@mui/material/Card';
 import { useState } from 'preact/hooks';
-import Divider from '../../../components/Divider';
-import Typography from '../../../components/Typography';
+import Divider from './Divider';
+import Typography from './Typography';
 
 const TimelineContainer = styled.div`
   display: flex;

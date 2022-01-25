@@ -1,11 +1,11 @@
 /** @jsx h */
 import { h } from 'preact';
-import Typography from '../../components/Typography';
+import Typography from '../components/Typography';
 import HomeCard, {
   HalfContainer,
   TextContainer,
-} from './components/HomeCard';
-import RectButton from './components/RectButton';
+} from '../components/HomeCard';
+import RectButton from '../components/RectButton';
 
 const Hero = () => {
   return (

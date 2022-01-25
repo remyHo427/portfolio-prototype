@@ -6,7 +6,7 @@ import {
   cloneElement,
   FunctionComponent,
 } from 'preact';
-import { useEffect, useState } from 'preact/hooks';
+import { useState } from 'preact/hooks';
 import {
   ThemeProvider,
   darkTheme,

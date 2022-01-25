@@ -1,12 +1,12 @@
 /** @jsx h */
 import { h } from 'preact';
 import { useRef } from 'preact/hooks';
-import HomeCard, { HalfContainer } from './components/HomeCard';
+import HomeCard, { HalfContainer } from '../components/HomeCard';
 import styled from 'styled-components';
-import CollapsibleList from './components/collapsibleList';
-import Typography from '../../components/Typography';
-import Timeline from './components/timeline';
-import Divider from '../../components/Divider';
+import CollapsibleList from '../components/collapsibleList';
+import Typography from '../components/Typography';
+import Timeline from '../components/timeline';
+import Divider from '../components/Divider';
 
 const StretchCard = styled(HomeCard)`
   align-items: stretch;

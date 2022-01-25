@@ -9,6 +9,9 @@ const StripeCard = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  &:not(:first-child) {
+    margin-bottom: 5rem;
+  }
 `;
 const HalfContainer = styled.div`
   width: 50%;

@@ -4,7 +4,6 @@ import styled from 'styled-components';
 import BaseLayout from './BaseLayout';
 import Switch from '@mui/material/Switch';
 import Icon from '../components/Icon';
-import Tabs from '../containers/Tabs';
 import LightModeIcon from '@mui/icons-material/LightMode';
 import DarkModeIcon from '@mui/icons-material/DarkMode';
 
@@ -29,6 +28,7 @@ const Header = styled.div`
   width: 100%;
   height: 4rem;
   display: flex;
+  justify-content: space-between;
 `;
 const SideContainer = styled.div`
   height: 100%;
@@ -64,14 +64,6 @@ const MainLayoutChild: FunctionComponent<MainLayoutProps> = ({
           <SideContainer>
             <Logo>Logo</Logo>
           </SideContainer>
-          <Tabs
-            data={[
-              { href: '/', label: 'Home' },
-              { href: '/about', label: 'About' },
-              { href: '/projects', label: 'Projects' },
-              { href: '/contact', label: 'Contact' },
-            ]}
-          />
           <SwitchContainer>
             <Icon size="1rem" icon={<LightModeIcon />} />
             <Switch

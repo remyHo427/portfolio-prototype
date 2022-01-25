@@ -1,10 +1,10 @@
 /** @jsx h */
 import { h, FunctionComponent } from 'preact';
 import MainLayout from '../layout/MainLayout';
-import Hero from '../containers/Home/Hero';
-import Experience from '../containers/Home/Experience';
-import Projects from '../containers/Home/Projects';
-import Contacts from '../containers/Home/Contacts';
+import Hero from '../containers/Hero';
+import Experience from '../containers/Experience';
+import Projects from '../containers/Projects';
+import Contacts from '../containers/Contacts';
 
 const Home: FunctionComponent<{ path: string }> = ({
   path, // eslint-disable-line @typescript-eslint/no-unused-vars

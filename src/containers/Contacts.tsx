@@ -1,9 +1,9 @@
 /** @jsx h */
 import { h } from 'preact';
-import HomeCard, { HalfContainer } from './components/HomeCard';
-import RectButton from './components/RectButton';
+import HomeCard, { HalfContainer } from '../components/HomeCard';
+import RectButton from '../components/RectButton';
 import TextField from '@mui/material/TextField';
-import Typography from '../../components/Typography';
+import Typography from '../components/Typography';
 import styled from 'styled-components';
 
 const ContactStripeCard = styled(HomeCard)`

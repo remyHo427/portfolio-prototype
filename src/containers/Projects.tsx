@@ -1,10 +1,10 @@
 /** @jsx h */
 import { h } from 'preact';
 import styled from 'styled-components';
-import GridView, { BigWindow } from './components/gridView';
-import HomeCard, { HalfContainer } from './components/HomeCard';
-import Typography from '../../components/Typography';
-import Divider from '../../components/Divider';
+import GridView, { BigWindow } from '../components/gridView';
+import HomeCard, { HalfContainer } from '../components/HomeCard';
+import Typography from '../components/Typography';
+import Divider from '../components/Divider';
 
 const data = [
   {
