@@ -21,8 +21,10 @@ const GridContainer = styled.div`
   display: grid;
   width: 80%;
   margin: auto;
-  grid-template-columns: 48.5% 48.5%;
-  grid-gap: 1rem;
+  grid-template-columns: ${(props: { bigWindow: boolean }) =>
+    props.bigWindow ? '100%' : '48.5% 48.5%'};
+  grid-gap: ${(props: { bigWindow: boolean }) =>
+    props.bigWindow ? '0px' : '1rem'};
 `;
 const PageDotContainer = styled.div`
   width: 100%;
@@ -47,45 +49,54 @@ const Window = styled.div`
   height: 15rem;
   border: 1px solid ${(props) => props.theme.palette.divider};
 `;
+const BigWindow = styled(Window)`
+  height: 31rem;
+`;
 
-const GridView: FunctionalComponent<Record<string, unknown>> = ({
+const GridView: FunctionalComponent<{ bigWindow?: boolean }> = ({
   children,
+  bigWindow = false,
 }) => {
   const [page, setPage] = useState(1);
+  const perPage = bigWindow ? 1 : 4;
+  const arr: ComponentChildren[] = Array.isArray(children)
+    ? children
+    : [children];
+
   return (
     <Fragment>
       <Container>
         <Button
-          onClick={() => (page != 1 ? setPage(page - 1) : null)}
+          disabled={page == 1}
+          onClick={() => setPage(page - 1)}
         >
           <Icon size="1rem" icon={<ArrowBackwardIos />} />
         </Button>
-        <GridContainer>
-          {paginate<ComponentChildren>({
-            elements: Array.isArray(children)
-              ? children
-              : Array(children),
-            currPage: page - 1,
-            perPage: 4,
-            padToFullPage: true,
-            emptyElement: <Window />,
-          })}
+        <GridContainer bigWindow={bigWindow}>
+          {bigWindow
+            ? paginate({
+                elements: arr,
+                currPage: page - 1,
+                perPage,
+              })
+            : paginate({
+                elements: arr,
+                currPage: page - 1,
+                perPage,
+                padToFullPage: true,
+                emptyElement: <Window />,
+              })}
         </GridContainer>
         <Button
-          onClick={() =>
-            Array.isArray(children) && page < children.length / 4
-              ? setPage(page + 1)
-              : null
-          }
+          disabled={page > arr.length / perPage - 1}
+          onClick={() => setPage(page + 1)}
         >
           <Icon size="1rem" icon={<ArrowForwardIos />} />
         </Button>
       </Container>
       <PageDots
         currPage={page}
-        totalPage={
-          Array.isArray(children) ? Math.ceil(children.length / 4) : 1
-        }
+        totalPage={Math.ceil(arr.length / perPage) || 1}
       />
     </Fragment>
   );
@@ -122,7 +133,7 @@ const paginate = <T,>({
     currPage * perPage + perPage,
   );
   if (padToFullPage && elem.length < perPage) {
-    for (let i = elem.length; i < perPage; i++) {
+    for (let i = elem.length; i <= perPage; i++) {
       elem[i] = emptyElement;
     }
     return elem;
@@ -131,4 +142,4 @@ const paginate = <T,>({
 };
 
 export default GridView;
-export { Window };
+export { Window, BigWindow };
